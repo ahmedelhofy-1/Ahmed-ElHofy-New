@@ -12,6 +12,11 @@ import InventoryView from './components/InventoryView';
 import AIAssistant from './components/AIAssistant';
 import AssetHierarchyView from './components/AssetHierarchyView';
 import EquipmentHealthView from './components/EquipmentHealthView';
+import SparePartsConsumptionView from './components/SparePartsConsumptionView';
+import MaintenanceCostView from './components/MaintenanceCostView';
+import LaborPerformanceView from './components/LaborPerformanceView';
+import BudgetActualView from './components/BudgetActualView';
+import ExecutiveDashboardView from './components/ExecutiveDashboardView';
 
 const App: React.FC = () => {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -20,12 +25,22 @@ const App: React.FC = () => {
     switch (activeTab) {
       case 'dashboard':
         return <Dashboard />;
+      case 'executive-summary':
+        return <ExecutiveDashboardView />;
       case 'assets':
         return <AssetsView />;
       case 'asset-hierarchy':
         return <AssetHierarchyView />;
       case 'health-assessment':
         return <EquipmentHealthView />;
+      case 'spare-parts':
+        return <SparePartsConsumptionView />;
+      case 'maintenance-cost':
+        return <MaintenanceCostView />;
+      case 'budget-actual':
+        return <BudgetActualView />;
+      case 'labor-performance':
+        return <LaborPerformanceView />;
       case 'workorders':
         return <WorkOrdersView />;
       case 'breakdown-analysis':

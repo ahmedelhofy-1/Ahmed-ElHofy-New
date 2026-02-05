@@ -99,6 +99,32 @@ export interface InventoryItem {
   category: string;
   stock: number;
   minStock: number;
+  maxStock: number;
   unit: string;
   price: number;
+  isCritical: boolean;
+  isSlowMoving?: boolean;
+}
+
+export interface SparePartConsumption {
+  id: string;
+  materialCode: string;
+  description: string;
+  quantity: number;
+  unitCost: number;
+  totalCost: number;
+  date: string;
+  sector: string;
+  equipmentId: string;
+  equipmentName: string;
+  workOrderId: string;
+}
+
+export interface Technician {
+  id: string;
+  name: string;
+  role: string;
+  site: string;
+  baseHoursPerWeek: number;
+  specialty: 'Mechanic' | 'Electrician' | 'Irrigation Specialist' | 'HVAC' | 'General';
 }
