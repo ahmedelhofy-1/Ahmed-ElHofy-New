@@ -2,12 +2,13 @@
 import React, { useState } from 'react';
 import { MOCK_ASSETS } from '../constants';
 import { AssetStatus } from '../types';
-import { Filter, Plus, MoreVertical, Download, Search } from 'lucide-react';
+import { Filter, Plus, MoreVertical, Download, Search, LayoutGrid } from 'lucide-react';
 import AssetRegistrationForm from './AssetRegistrationForm';
+import BulkUploadView from './BulkUploadView';
 
 const AssetsView: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [showRegistration, setShowRegistration] = useState(false);
+  const [viewState, setViewState] = useState<'list' | 'register' | 'bulk'>('list');
 
   const filteredAssets = MOCK_ASSETS.filter(asset => 
     asset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -16,17 +17,31 @@ const AssetsView: React.FC = () => {
   );
 
   const handleSaveAsset = (data: any) => {
-    console.log('Saving Asset Data:', data);
-    // In a real app, this would trigger an API call to SAP/Backend
+    console.log('Saving Single Asset:', data);
     alert('Asset successfully synchronized with ERP master data.');
-    setShowRegistration(false);
+    setViewState('list');
   };
 
-  if (showRegistration) {
+  const handleBulkUpload = (data: any[]) => {
+    console.log('Synchronizing Bulk Data:', data);
+    alert(`Successfully synchronized ${data.length} records to the ERP system.`);
+    setViewState('list');
+  };
+
+  if (viewState === 'register') {
     return (
       <AssetRegistrationForm 
         onSave={handleSaveAsset} 
-        onCancel={() => setShowRegistration(false)} 
+        onCancel={() => setViewState('list')} 
+      />
+    );
+  }
+
+  if (viewState === 'bulk') {
+    return (
+      <BulkUploadView 
+        onCancel={() => setViewState('list')}
+        onUpload={handleBulkUpload}
       />
     );
   }
@@ -44,7 +59,14 @@ const AssetsView: React.FC = () => {
             Export Master Data
           </button>
           <button 
-            onClick={() => setShowRegistration(true)}
+            onClick={() => setViewState('bulk')}
+            className="flex items-center gap-2 px-4 py-2 border border-blue-200 text-blue-600 bg-blue-50 rounded-lg text-sm font-semibold hover:bg-blue-100 transition-all active:scale-95"
+          >
+            <LayoutGrid size={18} />
+            Bulk Upload
+          </button>
+          <button 
+            onClick={() => setViewState('register')}
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg text-sm font-semibold hover:bg-blue-700 transition-all shadow-md active:scale-95"
           >
             <Plus size={18} />

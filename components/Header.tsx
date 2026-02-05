@@ -11,14 +11,14 @@ const Header: React.FC<HeaderProps> = ({ activeTabLabel }) => {
     <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-8 z-10 sap-shadow">
       <div className="flex items-center gap-4">
         <div className="flex items-center text-sm text-gray-500 gap-2">
-          <span>AgriMant ERP</span>
+          <span className="font-medium text-blue-800">Daltex ERP</span>
           <span className="text-gray-300">/</span>
           <span className="font-semibold text-gray-900">{activeTabLabel}</span>
         </div>
       </div>
       
       <div className="flex items-center gap-6">
-        <div className="relative">
+        <div className="relative hidden md:block">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" size={18} />
           <input
             type="text"
@@ -37,8 +37,8 @@ const Header: React.FC<HeaderProps> = ({ activeTabLabel }) => {
               3
             </span>
           </button>
-          <div className="h-8 w-8 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-blue-100 hover:text-blue-600 cursor-pointer transition-colors">
-            <User size={20} />
+          <div className="h-8 w-8 rounded-full bg-blue-100 text-blue-700 flex items-center justify-center font-bold cursor-pointer hover:bg-blue-600 hover:text-white transition-all">
+            DX
           </div>
         </div>
       </div>

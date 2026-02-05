@@ -1,5 +1,7 @@
 {
-  "name": "AgriMant ERP - CMMS for Agriculture",
-  "description": "A high-performance SAP-inspired Computerized Maintenance Management System tailored for agricultural enterprises, featuring asset tracking, work order management, and AI-driven predictive maintenance insights.",
-  "requestFramePermissions": []
+  "name": "Daltex ERP - CMMS for Agriculture",
+  "description": "A specialized SAP-style Computerized Maintenance Management System (CMMS) for Daltex agricultural operations, including asset management, technical hierarchy, and AI-driven maintenance insights.",
+  "requestFramePermissions": [
+    "camera"
+  ]
 }
