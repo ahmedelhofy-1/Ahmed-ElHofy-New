@@ -26,7 +26,7 @@ const App: React.FC = () => {
       case 'dashboard':
         return <Dashboard />;
       case 'executive-summary':
-        return <ExecutiveDashboardView />;
+        return <ExecutiveDashboardView onNavigate={setActiveTab} />;
       case 'assets':
         return <AssetsView />;
       case 'asset-hierarchy':
