@@ -43,13 +43,21 @@ export enum AgriculturalSeason {
 export interface Asset {
   id: string;
   name: string;
-  type: 'Tractor' | 'Irrigation' | 'Harvester' | 'Greenhouse' | 'Processing Plant' | 'Infrastructure' | 'Component';
+  type: string;
   status: AssetStatus;
   location: string;
   sector: string;
   manufacturer?: string;
-  functionalLocation: string; // Hierarchy string like "SEC1-PUMP-01"
-  parentAssetId?: string; // For Tree structure
+  model?: string;
+  serialNumber?: string;
+  localId?: string;
+  code?: string;
+  itemCode?: string;
+  mainGroup?: string;
+  subGroup?: string;
+  notes?: string;
+  functionalLocation: string;
+  parentAssetId?: string;
   lastMaintenance: string;
   nextMaintenance: string;
   healthScore: number;
